@@ -2,7 +2,7 @@
 /**
  * Twenty Fourteen functions and definitions
  *
- * Sets up the theme and provides some helper functions, which are used in the
+ * Set up the theme and provides some helper functions, which are used in the
  * theme as custom template tags. Others are attached to action and filter
  * hooks in WordPress to change core functionality.
  *
@@ -223,7 +223,7 @@ endif; // twentyfourteen_setup()
 add_action( 'after_setup_theme', 'twentyfourteen_setup' );
 
 /**
- * Adjusts content_width value for image attachment template.
+ * Adjust content_width value for image attachment template.
  *
  * @since Twenty Fourteen 1.0
  */
@@ -264,7 +264,7 @@ function twentyfourteen_has_featured_posts() {
 }
 
 /**
- * Registers three Twenty Fourteen widget areas.
+ * Register three Twenty Fourteen widget areas.
  *
  * @since Twenty Fourteen 1.0
  */
@@ -310,7 +310,7 @@ add_action( 'widgets_init', 'twentyfourteen_widgets_init' );
 
 if ( ! function_exists( 'twentyfourteen_font_url' ) ) :
 	/**
-	 * Registers Lato font for Twenty Fourteen.
+	 * Register Lato font for Twenty Fourteen.
 	 *
 	 * @since Twenty Fourteen 1.0
 	 * @since Twenty Fourteen 3.6 Replaced Google URL with self-hosted fonts.
@@ -332,7 +332,7 @@ if ( ! function_exists( 'twentyfourteen_font_url' ) ) :
 endif;
 
 /**
- * Enqueues scripts and styles for the front end.
+ * Enqueue scripts and styles for the front end.
  *
  * @since Twenty Fourteen 1.0
  */
@@ -342,16 +342,17 @@ function twentyfourteen_scripts() {
 	wp_enqueue_style( 'twentyfourteen-lato', twentyfourteen_font_url(), array(), $font_version );
 
 	// Add Genericons font, used in the main stylesheet.
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '20251202' );
+	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.0.3' );
 
 	// Load our main stylesheet.
-	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri(), array(), '20250715' );
+	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri(), array(), '20250415' );
 
 	// Theme block stylesheet.
-	wp_enqueue_style( 'twentyfourteen-block-style', get_template_directory_uri() . '/css/blocks.css', array( 'twentyfourteen-style' ), '20250715' );
+	wp_enqueue_style( 'twentyfourteen-block-style', get_template_directory_uri() . '/css/blocks.css', array( 'twentyfourteen-style' ), '20240708' );
 
-	// Register the Internet Explorer specific stylesheet.
-	wp_register_style( 'twentyfourteen-ie', false, array( 'twentyfourteen-style' ) );
+	// Load the Internet Explorer specific stylesheet.
+	wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style' ), '20140711' );
+	wp_style_add_data( 'twentyfourteen-ie', 'conditional', 'lt IE 9' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -400,7 +401,7 @@ function twentyfourteen_scripts() {
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
 /**
- * Enqueues font stylesheet to admin screen for custom header display.
+ * Enqueue font stylesheet to admin screen for custom header display.
  *
  * @since Twenty Fourteen 1.0
  */
@@ -411,7 +412,7 @@ function twentyfourteen_admin_fonts() {
 add_action( 'admin_print_scripts-appearance_page_custom-header', 'twentyfourteen_admin_fonts' );
 
 /**
- * Adds preconnect for Google Fonts.
+ * Add preconnect for Google Fonts.
  *
  * @since Twenty Fourteen 1.9
  * @deprecated Twenty Fourteen 3.6 Disabled filter because, by default, fonts are self-hosted.
@@ -437,7 +438,7 @@ function twentyfourteen_resource_hints( $urls, $relation_type ) {
 // add_filter( 'wp_resource_hints', 'twentyfourteen_resource_hints', 10, 2 );
 
 /**
- * Enqueues styles for the block-based editor.
+ * Enqueue styles for the block-based editor.
  *
  * @since Twenty Fourteen 2.3
  */
@@ -452,7 +453,7 @@ add_action( 'enqueue_block_editor_assets', 'twentyfourteen_block_editor_styles' 
 
 if ( ! function_exists( 'twentyfourteen_the_attached_image' ) ) :
 	/**
-	 * Prints the attached image with a link to the next attached image.
+	 * Print the attached image with a link to the next attached image.
 	 *
 	 * @since Twenty Fourteen 1.0
 	 */
@@ -520,7 +521,7 @@ endif;
 
 if ( ! function_exists( 'twentyfourteen_list_authors' ) ) :
 	/**
-	 * Prints a list of all site contributors who published at least one post.
+	 * Print a list of all site contributors who published at least one post.
 	 *
 	 * @since Twenty Fourteen 1.0
 	 */
@@ -582,7 +583,7 @@ if ( ! function_exists( 'twentyfourteen_list_authors' ) ) :
 endif;
 
 /**
- * Extends the default WordPress body classes.
+ * Extend the default WordPress body classes.
  *
  * Adds body classes to denote:
  * 1. Single or multiple authors.
@@ -639,7 +640,7 @@ function twentyfourteen_body_classes( $classes ) {
 add_filter( 'body_class', 'twentyfourteen_body_classes' );
 
 /**
- * Extends the default WordPress post classes.
+ * Extend the default WordPress post classes.
  *
  * Adds a post class to denote:
  * Non-password protected page with a post thumbnail.
@@ -659,7 +660,7 @@ function twentyfourteen_post_classes( $classes ) {
 add_filter( 'post_class', 'twentyfourteen_post_classes' );
 
 /**
- * Creates a nicely formatted and more specific title element text for output
+ * Create a nicely formatted and more specific title element text for output
  * in head of document, based on current view.
  *
  * @since Twenty Fourteen 1.0
@@ -728,7 +729,7 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Registers block patterns and pattern categories.
+ * Register block patterns and pattern categories.
  *
  * @since Twenty Fourteen 4.1
  */
@@ -749,7 +750,7 @@ if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow
 }
 
 /**
- * Adds an `is_customize_preview` function if it is missing.
+ * Add an `is_customize_preview` function if it is missing.
  *
  * Enables installing Twenty Fourteen in WordPress versions before 4.0.0 when the
  * `is_customize_preview` function was introduced.

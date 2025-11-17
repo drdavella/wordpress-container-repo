@@ -1,6 +1,6 @@
 <?php
 /**
- * Shows the appropriate content for the Aside post format.
+ * Show the appropriate content for the Aside post format.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

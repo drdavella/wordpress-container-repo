@@ -16,7 +16,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 	class Twenty_Twenty_One_Customize {
 
 		/**
-		 * Constructor. Instantiates the object.
+		 * Constructor. Instantiate the object.
 		 *
 		 * @since Twenty Twenty-One 1.0
 		 */
@@ -25,7 +25,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 		}
 
 		/**
-		 * Registers customizer options.
+		 * Register customizer options.
 		 *
 		 * @since Twenty Twenty-One 1.0
 		 *
@@ -144,7 +144,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 		}
 
 		/**
-		 * Sanitizes a boolean for checkbox.
+		 * Sanitize boolean for checkbox.
 		 *
 		 * @since Twenty Twenty-One 1.0
 		 *
@@ -156,7 +156,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 		}
 
 		/**
-		 * Renders the site title for the selective refresh partial.
+		 * Render the site title for the selective refresh partial.
 		 *
 		 * @since Twenty Twenty-One 1.0
 		 *
@@ -167,7 +167,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 		}
 
 		/**
-		 * Renders the site tagline for the selective refresh partial.
+		 * Render the site tagline for the selective refresh partial.
 		 *
 		 * @since Twenty Twenty-One 1.0
 		 *

@@ -45,7 +45,7 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Enqueues scripts.
+	 * Enqueue scripts.
 	 *
 	 * @since Twenty Fourteen 1.7
 	 */
@@ -62,7 +62,7 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Outputs the HTML for this widget.
+	 * Output the HTML for this widget.
 	 *
 	 * @since Twenty Fourteen 1.0
 	 *
@@ -256,7 +256,7 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Deals with the settings when they are saved by the admin.
+	 * Deal with the settings when they are saved by the admin.
 	 *
 	 * Here is where any validation should happen.
 	 *
@@ -280,7 +280,7 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Displays the form for this widget on the Widgets page of the Admin area.
+	 * Display the form for this widget on the Widgets page of the Admin area.
 	 *
 	 * @since Twenty Fourteen 1.0
 	 *

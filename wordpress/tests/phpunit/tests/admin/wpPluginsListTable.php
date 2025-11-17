@@ -57,7 +57,7 @@ class Tests_Admin_wpPluginsListTable extends WP_UnitTestCase {
 				'role'       => 'administrator',
 				'user_login' => 'test_wp_plugins_list_table',
 				'user_pass'  => 'password',
-				'user_email' => 'testadmin@example.com',
+				'user_email' => 'testadmin@test.com',
 			)
 		);
 		self::$original_s = $s;
@@ -149,13 +149,9 @@ class Tests_Admin_wpPluginsListTable extends WP_UnitTestCase {
 		$list_table       = new WP_Plugins_List_Table();
 		$show_autoupdates = new ReflectionProperty( $list_table, 'show_autoupdates' );
 
-		if ( PHP_VERSION_ID < 80100 ) {
-			$show_autoupdates->setAccessible( true );
-		}
+		$show_autoupdates->setAccessible( true );
 		$actual = $show_autoupdates->getValue( $list_table );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$show_autoupdates->setAccessible( false );
-		}
+		$show_autoupdates->setAccessible( false );
 
 		$_REQUEST['plugin_status'] = $original_status;
 

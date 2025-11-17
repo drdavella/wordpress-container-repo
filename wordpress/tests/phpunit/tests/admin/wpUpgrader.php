@@ -170,13 +170,9 @@ class Tests_Admin_WpUpgrader extends WP_UnitTestCase {
 	 */
 	public function test_flatten_dirlist_should_flatten_the_provided_directory_list( $expected, $nested_files, $path = '' ) {
 		$flatten_dirlist = new ReflectionMethod( self::$instance, 'flatten_dirlist' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$flatten_dirlist->setAccessible( true );
-		}
+		$flatten_dirlist->setAccessible( true );
 		$actual = $flatten_dirlist->invoke( self::$instance, $nested_files, $path );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$flatten_dirlist->setAccessible( false );
-		}
+		$flatten_dirlist->setAccessible( false );
 
 		$this->assertSameSetsWithIndex( $expected, $actual );
 	}

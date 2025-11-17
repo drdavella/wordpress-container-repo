@@ -14,28 +14,6 @@ require_once ABSPATH . 'wp-admin/includes/ajax-actions.php';
 class Tests_Ajax_wpAjaxSendAttachmentToEditor extends WP_Ajax_UnitTestCase {
 
 	/**
-	 * Shared user ID for the tests.
-	 *
-	 * @var int
-	 */
-	public static $user_id = 0;
-
-	/**
-	 * Set up shared fixtures.
-	 *
-	 * @param WP_UnitTest_Factory $factory
-	 */
-	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
-		self::$user_id = $factory->user->create(
-			array(
-				'role'       => 'administrator',
-				'user_login' => 'user_36578_administrator',
-				'user_email' => 'user_36578_administrator@example.com',
-			)
-		);
-	}
-
-	/**
 	 * @ticket 36578
 	 *
 	 * @covers ::get_image_send_to_editor
@@ -127,7 +105,13 @@ class Tests_Ajax_wpAjaxSendAttachmentToEditor extends WP_Ajax_UnitTestCase {
 	public function test_wp_ajax_set_attachment_thumbnail_success() {
 		// Become an administrator.
 		$post    = $_POST;
-		$user_id = self::$user_id;
+		$user_id = self::factory()->user->create(
+			array(
+				'role'       => 'administrator',
+				'user_login' => 'user_36578_administrator',
+				'user_email' => 'user_36578_administrator@example.com',
+			)
+		);
 		wp_set_current_user( $user_id );
 		$_POST = array_merge( $_POST, $post );
 
@@ -167,7 +151,13 @@ class Tests_Ajax_wpAjaxSendAttachmentToEditor extends WP_Ajax_UnitTestCase {
 	public function test_wp_ajax_set_attachment_thumbnail_missing_nonce() {
 		// Become an administrator.
 		$post    = $_POST;
-		$user_id = self::$user_id;
+		$user_id = self::factory()->user->create(
+			array(
+				'role'       => 'administrator',
+				'user_login' => 'user_36578_administrator',
+				'user_email' => 'user_36578_administrator@example.com',
+			)
+		);
 		wp_set_current_user( $user_id );
 		$_POST = array_merge( $_POST, $post );
 

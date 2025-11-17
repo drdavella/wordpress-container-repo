@@ -156,8 +156,6 @@ class Tests_WP_Generate_Tag_Cloud extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertNotEmpty( $tags );
-
 		foreach ( $tags as $tag ) {
 			$this->assertStringContainsString( '>' . $tag->name . '<', $found );
 		}
@@ -188,8 +186,6 @@ class Tests_WP_Generate_Tag_Cloud extends WP_UnitTestCase {
 
 		$this->assertMatchesRegularExpression( "|^<ul class='wp-tag-cloud' role='list'>|", $found );
 		$this->assertMatchesRegularExpression( "|</ul>\n|", $found );
-
-		$this->assertNotEmpty( $tags );
 
 		foreach ( $tags as $tag ) {
 			$this->assertStringContainsString( '>' . $tag->name . '<', $found );

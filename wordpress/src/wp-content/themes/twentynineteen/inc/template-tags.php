@@ -202,7 +202,7 @@ endif;
 
 if ( ! function_exists( 'twentynineteen_comment_form' ) ) :
 	/**
-	 * Displays the comment form.
+	 * Documentation for function.
 	 */
 	function twentynineteen_comment_form( $order ) {
 		if ( true === $order || strtolower( $order ) === strtolower( get_option( 'comment_order', 'asc' ) ) ) {
@@ -218,23 +218,20 @@ endif;
 
 if ( ! function_exists( 'twentynineteen_the_posts_navigation' ) ) :
 	/**
-	 * Displays the next and previous posts navigation.
+	 * Documentation for function.
 	 */
 	function twentynineteen_the_posts_navigation() {
-		$order          = get_query_var( 'order', 'DESC' );
-		$new_posts_text = __( 'Newer posts', 'twentynineteen' );
-		$old_posts_text = __( 'Older posts', 'twentynineteen' );
 		the_posts_pagination(
 			array(
 				'mid_size'  => 2,
 				'prev_text' => sprintf(
 					'%s <span class="nav-prev-text">%s</span>',
 					twentynineteen_get_icon_svg( 'chevron_left', 22 ),
-					( 'DESC' === $order ) ? $new_posts_text : $old_posts_text
+					__( 'Newer posts', 'twentynineteen' )
 				),
 				'next_text' => sprintf(
 					'<span class="nav-next-text">%s</span> %s',
-					( 'DESC' === $order ) ? $old_posts_text : $new_posts_text,
+					__( 'Older posts', 'twentynineteen' ),
 					twentynineteen_get_icon_svg( 'chevron_right', 22 )
 				),
 			)
@@ -244,7 +241,7 @@ endif;
 
 if ( ! function_exists( 'wp_body_open' ) ) :
 	/**
-	 * Fires the wp_body_open action.
+	 * Fire the wp_body_open action.
 	 *
 	 * Added for backward compatibility to support pre-5.2.0 WordPress versions.
 	 *

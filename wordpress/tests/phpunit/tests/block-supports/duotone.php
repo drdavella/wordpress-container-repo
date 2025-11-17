@@ -10,6 +10,14 @@
 
 class Tests_Block_Supports_Duotone extends WP_UnitTestCase {
 	/**
+	 * Cleans up CSS added to block-supports from duotone styles. We need to do this
+	 * in order to avoid impacting other tests.
+	 */
+	public static function wpTearDownAfterClass() {
+		WP_Style_Engine_CSS_Rules_Store::remove_all_stores();
+	}
+
+	/**
 	 * Tests whether the duotone preset class is added to the block.
 	 *
 	 * @ticket 58555
@@ -70,9 +78,7 @@ class Tests_Block_Supports_Duotone extends WP_UnitTestCase {
 	public function test_get_slug_from_attribute( $data_attr, $expected ) {
 
 		$reflection = new ReflectionMethod( 'WP_Duotone', 'get_slug_from_attribute' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$reflection->setAccessible( true );
-		}
+		$reflection->setAccessible( true );
 
 		$this->assertSame( $expected, $reflection->invoke( null, $data_attr ) );
 	}
@@ -122,9 +128,7 @@ class Tests_Block_Supports_Duotone extends WP_UnitTestCase {
 		 */
 		$wp_duotone                      = new WP_Duotone();
 		$block_css_declarations_property = new ReflectionProperty( 'WP_Duotone', 'block_css_declarations' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$block_css_declarations_property->setAccessible( true );
-		}
+		$block_css_declarations_property->setAccessible( true );
 		$previous_value = $block_css_declarations_property->getValue();
 		$block_css_declarations_property->setValue( $wp_duotone, array() );
 
@@ -133,9 +137,7 @@ class Tests_Block_Supports_Duotone extends WP_UnitTestCase {
 
 		// Reset the property.
 		$block_css_declarations_property->setValue( $wp_duotone, $previous_value );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$block_css_declarations_property->setAccessible( false );
-		}
+		$block_css_declarations_property->setAccessible( false );
 
 		$this->assertNotEmpty( $actual );
 	}
@@ -145,9 +147,7 @@ class Tests_Block_Supports_Duotone extends WP_UnitTestCase {
 	 */
 	public function test_is_preset( $data_attr, $expected ) {
 		$reflection = new ReflectionMethod( 'WP_Duotone', 'is_preset' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$reflection->setAccessible( true );
-		}
+		$reflection->setAccessible( true );
 
 		$this->assertSame( $expected, $reflection->invoke( null, $data_attr ) );
 	}
@@ -173,9 +173,7 @@ class Tests_Block_Supports_Duotone extends WP_UnitTestCase {
 	 */
 	public function test_colord_parse_hue( $value, $unit, $expected ) {
 		$reflection = new ReflectionMethod( 'WP_Duotone', 'colord_parse_hue' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$reflection->setAccessible( true );
-		}
+		$reflection->setAccessible( true );
 
 		$this->assertSame( $expected, $reflection->invoke( null, $value, $unit ) );
 	}

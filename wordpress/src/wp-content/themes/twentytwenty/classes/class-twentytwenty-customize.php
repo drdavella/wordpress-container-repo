@@ -16,7 +16,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 	class TwentyTwenty_Customize {
 
 		/**
-		 * Registers customizer options.
+		 * Register customizer options.
 		 *
 		 * @since Twenty Twenty 1.0
 		 *
@@ -26,7 +26,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 
 			/**
 			 * Site Title & Description.
-			 */
+			 * */
 			$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 			$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
@@ -185,7 +185,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					array(
 						'section'         => 'colors',
 						'settings'        => 'accent_hue',
-						'label'           => __( 'Custom Color', 'twentytwenty' ),
 						'description'     => __( 'Apply a custom color for links, buttons, featured images.', 'twentytwenty' ),
 						'mode'            => 'hue',
 						'active_callback' => static function () use ( $wp_customize ) {
@@ -439,7 +438,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		}
 
 		/**
-		 * Sanitizes a select input.
+		 * Sanitize select.
 		 *
 		 * @since Twenty Twenty 1.0
 		 *
@@ -454,7 +453,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		}
 
 		/**
-		 * Sanitizes a boolean for checkbox.
+		 * Sanitize boolean for checkbox.
 		 *
 		 * @since Twenty Twenty 1.0
 		 *
@@ -476,7 +475,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
  * */
 if ( ! function_exists( 'twentytwenty_customize_partial_blogname' ) ) {
 	/**
-	 * Renders the site title for the selective refresh partial.
+	 * Render the site title for the selective refresh partial.
 	 *
 	 * @since Twenty Twenty 1.0
 	 */
@@ -487,7 +486,7 @@ if ( ! function_exists( 'twentytwenty_customize_partial_blogname' ) ) {
 
 if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) {
 	/**
-	 * Renders the site description for the selective refresh partial.
+	 * Render the site description for the selective refresh partial.
 	 *
 	 * @since Twenty Twenty 1.0
 	 */
@@ -498,7 +497,7 @@ if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) {
 
 if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
 	/**
-	 * Renders the site logo for the selective refresh partial.
+	 * Render the site logo for the selective refresh partial.
 	 *
 	 * Doing it this way so we don't have issues with `render_callback`'s arguments.
 	 *

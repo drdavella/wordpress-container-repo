@@ -8,7 +8,7 @@
  */
 
 /**
- * Implements Customizer additions and adjustments.
+ * Implement Customizer additions and adjustments.
  *
  * @since Twenty Fourteen 1.0
  *
@@ -95,7 +95,7 @@ function twentyfourteen_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'twentyfourteen_customize_register' );
 
 /**
- * Renders the site title for the selective refresh partial.
+ * Render the site title for the selective refresh partial.
  *
  * @since Twenty Fourteen 1.7
  *
@@ -108,7 +108,7 @@ function twentyfourteen_customize_partial_blogname() {
 }
 
 /**
- * Renders the site tagline for the selective refresh partial.
+ * Render the site tagline for the selective refresh partial.
  *
  * @since Twenty Fourteen 1.7
  *
@@ -121,7 +121,7 @@ function twentyfourteen_customize_partial_blogdescription() {
 }
 
 /**
- * Sanitizes the Featured Content layout value.
+ * Sanitize the Featured Content layout value.
  *
  * @since Twenty Fourteen 1.0
  *
@@ -137,7 +137,7 @@ function twentyfourteen_sanitize_layout( $layout ) {
 }
 
 /**
- * Binds JS handlers to make Customizer preview reload changes asynchronously.
+ * Bind JS handlers to make Customizer preview reload changes asynchronously.
  *
  * @since Twenty Fourteen 1.0
  */
@@ -147,7 +147,7 @@ function twentyfourteen_customize_preview_js() {
 add_action( 'customize_preview_init', 'twentyfourteen_customize_preview_js' );
 
 /**
- * Adds contextual help to the Themes and Post edit screens.
+ * Add contextual help to the Themes and Post edit screens.
  *
  * @since Twenty Fourteen 1.0
  */

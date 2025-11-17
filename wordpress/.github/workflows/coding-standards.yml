@@ -9,10 +9,9 @@ on:
       - '3.[89]'
       - '[4-9].[0-9]'
     tags:
-      - '3.[89]'
-      - '3.[89].[0-9]+'
-      - '[4-9].[0-9]'
-      - '[4-9].[0-9].[0-9]+'
+      - '[0-9]+.[0-9]'
+      - '[0-9]+.[0-9].[0-9]+'
+      - '!3.7.[0-9]+'
   pull_request:
     branches:
       - trunk
@@ -24,8 +23,6 @@ on:
       - '**.php'
       # These files configure npm. Changes could affect the outcome.
       - 'package*.json'
-      - '.npmrc'
-      - '.nvmrc'
       # These files configure Composer. Changes could affect the outcome.
       - 'composer.*'
       # This file configures JSHint. Changes could affect the outcome.
@@ -51,23 +48,23 @@ permissions: {}
 jobs:
   # Runs the PHP coding standards checks.
   phpcs:
-    name: Coding standards
-    uses: ./.github/workflows/reusable-coding-standards-php.yml
+    name: PHP coding standards
+    uses: WordPress/wordpress-develop/.github/workflows/reusable-coding-standards-php.yml@trunk
     permissions:
       contents: read
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
+    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
 
   # Runs the JavaScript coding standards checks.
   jshint:
-    name: Coding standards
-    uses: ./.github/workflows/reusable-coding-standards-javascript.yml
+    name: JavaScript coding standards
+    uses: WordPress/wordpress-develop/.github/workflows/reusable-coding-standards-javascript.yml@trunk
     permissions:
       contents: read
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
+    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
 
   slack-notifications:
     name: Slack Notifications
-    uses: ./.github/workflows/slack-notifications.yml
+    uses: WordPress/wordpress-develop/.github/workflows/slack-notifications.yml@trunk
     permissions:
       actions: read
       contents: read

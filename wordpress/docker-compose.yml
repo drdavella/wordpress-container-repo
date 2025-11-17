@@ -32,7 +32,7 @@ services:
   # The PHP container.
   ##
   php:
-    image: wordpressdevelop/php:${LOCAL_PHP-latest}
+    image: wordpressdevelop/php:${LOCAL_PHP-8.4-fpm}
 
     networks:
       - wpdevnet
@@ -70,7 +70,7 @@ services:
       - wpdevnet
 
     ports:
-      - "${LOCAL_DB_PORTS-3306}"
+      - "3306"
 
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -106,13 +106,9 @@ services:
       PHP_FPM_UID: ${PHP_FPM_UID-1000}
       PHP_FPM_GID: ${PHP_FPM_GID-1000}
       HOST_PATH: ${PWD-}/${LOCAL_DIR-src}
-      WP_CONFIG_PATH: /var/www/wp-config.php
 
     volumes:
       - ./:/var/www
-
-    # Keeps the service alive.
-    command: 'sleep infinity'
 
     # The init directive ensures the command runs with a PID > 1, so Ctrl+C works correctly.
     init: true

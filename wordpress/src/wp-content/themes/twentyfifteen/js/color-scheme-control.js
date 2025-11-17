@@ -1,7 +1,7 @@
 /* global colorScheme, Color */
 /**
- * Adds a listener to the Color Scheme control to update other color controls to new values/defaults.
- * Also triggers an update of the Color Scheme CSS when a color is changed.
+ * Add a listener to the Color Scheme control to update other color controls to new values/defaults.
+ * Also trigger an update of the Color Scheme CSS when a color is changed.
  */
 
 ( function( api ) {

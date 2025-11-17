@@ -29,9 +29,6 @@ class Tests_Formatting_SanitizePost extends WP_UnitTestCase {
 				case 'string':
 					$this->assertIsString( $post->$field, "field $field" );
 					break;
-				default:
-					$this->fail( "Type $type is not handled by this test." );
-					break;
 			}
 		}
 	}

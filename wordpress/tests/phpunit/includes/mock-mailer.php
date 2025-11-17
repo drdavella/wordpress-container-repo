@@ -20,6 +20,7 @@ class MockPHPMailer extends WP_PHPMailer {
 	public $mock_sent = array();
 
 	public function preSend() {
+		$this->Encoding = '8bit';
 		return parent::preSend();
 	}
 

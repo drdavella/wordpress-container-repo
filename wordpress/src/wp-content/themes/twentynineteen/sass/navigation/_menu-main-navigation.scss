@@ -433,13 +433,9 @@
 			white-space: inherit;
 		}
 
-		&:not(:has(.sub-menu.expanded-true)) {
-			overflow-y: scroll;
-		}
-
 		&.expanded-true {
 
-			display: block;
+			display: table;
 			margin-top: 0;
 			opacity: 1;
 			padding-left: 0;

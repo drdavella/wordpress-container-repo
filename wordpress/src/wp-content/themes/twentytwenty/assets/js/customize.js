@@ -22,8 +22,6 @@
 					}
 				} );
 			}
-			// The control-specific label is redundant because, visually, this control is part of the Color Scheme control.
-			control.container.find( '.customize-control-title:first' ).addClass( 'screen-reader-text' );
 		} );
 	} );
 }( jQuery, wp.customize ) );

@@ -2,8 +2,8 @@
 
 /**
  * @group admin
- * @group ms-required
  * @group network-admin
+ * @group ms-required
  *
  * @covers WP_MS_Users_List_Table
  */

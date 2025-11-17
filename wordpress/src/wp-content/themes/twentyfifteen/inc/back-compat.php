@@ -12,7 +12,7 @@
  */
 
 /**
- * Prevents switching to Twenty Fifteen on old versions of WordPress.
+ * Prevent switching to Twenty Fifteen on old versions of WordPress.
  *
  * Switches to the default theme.
  *
@@ -26,7 +26,7 @@ function twentyfifteen_switch_theme() {
 add_action( 'after_switch_theme', 'twentyfifteen_switch_theme' );
 
 /**
- * Adds message for unsuccessful theme switch.
+ * Add message for unsuccessful theme switch.
  *
  * Prints an update nag after an unsuccessful attempt to switch to
  * Twenty Fifteen on WordPress versions prior to 4.1.
@@ -45,7 +45,7 @@ function twentyfifteen_upgrade_notice() {
 }
 
 /**
- * Prevents the Customizer from being loaded on WordPress versions prior to 4.1.
+ * Prevent the Customizer from being loaded on WordPress versions prior to 4.1.
  *
  * @since Twenty Fifteen 1.0
  */
@@ -65,7 +65,7 @@ function twentyfifteen_customize() {
 add_action( 'load-customize.php', 'twentyfifteen_customize' );
 
 /**
- * Prevents the Theme Preview from being loaded on WordPress versions prior to 4.1.
+ * Prevent the Theme Preview from being loaded on WordPress versions prior to 4.1.
  *
  * @since Twenty Fifteen 1.0
  */

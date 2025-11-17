@@ -6,9 +6,9 @@ if ( document.body.classList.contains( 'twentytwentyone-supports-dark-theme' ) )
 }
 
 /**
- * Adds the dark mode class once the editor loads.
+ * Once the editor loads, add the dark mode class.
  *
- * Waits for the editor to load by periodically checking for an element, then adds the classes.
+ * Wait for the editor to load by periodically checking for an element, then we add the classes.
  *
  * @since Twenty Twenty-One 1.0
  *

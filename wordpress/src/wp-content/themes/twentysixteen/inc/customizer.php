@@ -248,7 +248,7 @@ function twentysixteen_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'twentysixteen_customize_register', 11 );
 
 /**
- * Renders the site title for the selective refresh partial.
+ * Render the site title for the selective refresh partial.
  *
  * @since Twenty Sixteen 1.2
  *
@@ -261,7 +261,7 @@ function twentysixteen_customize_partial_blogname() {
 }
 
 /**
- * Renders the site tagline for the selective refresh partial.
+ * Render the site tagline for the selective refresh partial.
  *
  * @since Twenty Sixteen 1.2
  *
@@ -791,11 +791,13 @@ function twentysixteen_get_color_scheme_css( $colors ) {
 	.comment-reply-link,
 	.no-comments,
 	.widecolumn .mu_register .mu_alert {
+		border-color: {$colors['main_text_color']}; /* Fallback for IE7 and IE8 */
 		border-color: {$colors['border_color']};
 	}
 
 	hr,
 	code {
+		background-color: {$colors['main_text_color']}; /* Fallback for IE7 and IE8 */
 		background-color: {$colors['border_color']};
 	}
 
@@ -836,7 +838,6 @@ CSS;
  * Customizer preview.
  *
  * @since Twenty Sixteen 1.0
- * @since Twenty Sixteen 4.1 Added `wp_print_inline_script_tag()` support.
  */
 function twentysixteen_color_scheme_css_template() {
 	$colors = array(
@@ -847,20 +848,11 @@ function twentysixteen_color_scheme_css_template() {
 		'secondary_text_color'  => '{{ data.secondary_text_color }}',
 		'border_color'          => '{{ data.border_color }}',
 	);
-
-	$css_template = twentysixteen_get_color_scheme_css( $colors );
-
-	if ( function_exists( 'wp_print_inline_script_tag' ) ) {
-		wp_print_inline_script_tag(
-			$css_template,
-			array(
-				'type' => 'text/html',
-				'id'   => 'tmpl-twentysixteen-color-scheme',
-			)
-		);
-	} else {
-		echo '<script type="text/html" id="tmpl-twentysixteen-color-scheme">' . $css_template . '</script>';
-	}
+	?>
+	<script type="text/html" id="tmpl-twentysixteen-color-scheme">
+		<?php echo twentysixteen_get_color_scheme_css( $colors ); ?>
+	</script>
+	<?php
 }
 add_action( 'customize_controls_print_footer_scripts', 'twentysixteen_color_scheme_css_template' );
 
@@ -1087,7 +1079,7 @@ function twentysixteen_main_text_color_css() {
 		.comment-author,
 		.comment-reply-title small a:hover,
 		.comment-reply-title small a:focus {
-			color: %1$s;
+			color: %1$s
 		}
 
 		blockquote,
@@ -1167,11 +1159,13 @@ function twentysixteen_main_text_color_css() {
 		.comment-reply-link,
 		.no-comments,
 		.widecolumn .mu_register .mu_alert {
+			border-color: %1$s; /* Fallback for IE7 and IE8 */
 			border-color: %2$s;
 		}
 
 		hr,
 		code {
+			background-color: %1$s; /* Fallback for IE7 and IE8 */
 			background-color: %2$s;
 		}
 

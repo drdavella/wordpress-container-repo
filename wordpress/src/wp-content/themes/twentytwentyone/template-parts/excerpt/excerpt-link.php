@@ -1,6 +1,6 @@
 <?php
 /**
- * Shows the appropriate content for the Link post format.
+ * Show the appropriate content for the Link post format.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

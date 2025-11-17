@@ -209,9 +209,7 @@ class Tests_Image_Editor extends WP_Image_UnitTestCase {
 		$editor = wp_get_image_editor( DIR_TESTDATA . '/images/canola.jpg' );
 
 		$property = new ReflectionProperty( $editor, 'size' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$property->setAccessible( true );
-		}
+		$property->setAccessible( true );
 		$property->setValue(
 			$editor,
 			array(
@@ -257,9 +255,7 @@ class Tests_Image_Editor extends WP_Image_UnitTestCase {
 			'width'  => 100,
 		);
 		$property = new ReflectionProperty( $editor, 'size' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$property->setAccessible( true );
-		}
+		$property->setAccessible( true );
 		$property->setValue( $editor, $size );
 
 		$this->assertSame( $size, $editor->get_size() );
@@ -282,9 +278,7 @@ class Tests_Image_Editor extends WP_Image_UnitTestCase {
 			'width'  => 100,
 		);
 		$property = new ReflectionProperty( $editor, 'size' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$property->setAccessible( true );
-		}
+		$property->setAccessible( true );
 		$property->setValue( $editor, $size );
 
 		$this->assertSame( '100x50', $editor->get_suffix() );

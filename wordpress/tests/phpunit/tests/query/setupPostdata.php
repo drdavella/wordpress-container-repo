@@ -121,9 +121,6 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 				'posts_per_page' => 1,
 			)
 		);
-
-		$this->assertTrue( $q->have_posts() );
-
 		if ( $q->have_posts() ) {
 			while ( $q->have_posts() ) {
 				$q->the_post();
@@ -224,9 +221,6 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 				'post__in' => array( $post2 ),
 			)
 		);
-
-		$this->assertTrue( $q->have_posts() );
-
 		if ( $q->have_posts() ) {
 			while ( $q->have_posts() ) {
 				$q->the_post();
@@ -287,9 +281,6 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 				'posts_per_page' => 1,
 			)
 		);
-
-		$this->assertTrue( $q->have_posts() );
-
 		if ( $q->have_posts() ) {
 			while ( $q->have_posts() ) {
 				$q->the_post();
@@ -376,9 +367,6 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 				'posts_per_page' => 1,
 			)
 		);
-
-		$this->assertTrue( $q->have_posts() );
-
 		if ( $q->have_posts() ) {
 			while ( $q->have_posts() ) {
 				$q->the_post();

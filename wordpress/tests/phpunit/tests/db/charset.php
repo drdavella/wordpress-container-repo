@@ -829,8 +829,6 @@ class Tests_DB_Charset extends WP_UnitTestCase {
 		self::$_wpdb->query( $drop );
 		self::$_wpdb->query( $create );
 
-		$this->assertNotEmpty( $expected_charset );
-
 		foreach ( $expected_charset as $column => $charset ) {
 			if ( self::$utf8_is_utf8mb3 && 'utf8' === $charset ) {
 				$charset = 'utf8mb3';
@@ -856,8 +854,6 @@ class Tests_DB_Charset extends WP_UnitTestCase {
 
 		self::$_wpdb->query( $create );
 
-		$this->assertNotEmpty( $columns );
-
 		$columns = array_keys( $columns );
 		foreach ( $columns as $column => $charset ) {
 			$this->assertFalse( self::$_wpdb->get_col_charset( $table, $column ) );
@@ -880,8 +876,6 @@ class Tests_DB_Charset extends WP_UnitTestCase {
 		unset( self::$_wpdb->is_mysql );
 
 		self::$_wpdb->query( $create );
-
-		$this->assertNotEmpty( $columns );
 
 		$columns = array_keys( $columns );
 		foreach ( $columns as $column => $charset ) {
@@ -1075,8 +1069,6 @@ class Tests_DB_Charset extends WP_UnitTestCase {
 				$query
 			)
 		);
-
-		$this->assertNotEmpty( $always_true );
 
 		foreach ( $always_true as $true_query ) {
 			$return = self::$_wpdb->check_safe_collation( $true_query );

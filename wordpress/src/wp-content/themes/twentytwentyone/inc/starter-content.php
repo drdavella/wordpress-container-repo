@@ -10,7 +10,7 @@
  */
 
 /**
- * Returns the array of starter content for the theme.
+ * Function to return the array of starter content for the theme.
  *
  * Passes it through the `twenty_twenty_one_starter_content` filter before returning.
  *

@@ -1,16 +1,9 @@
 <?php
 
 /**
- * Base class for testing image manipulation functionality.
+ * @group image
  */
 abstract class WP_Image_UnitTestCase extends WP_UnitTestCase {
-
-	/**
-	 * The image editing library class to use in tests.
-	 *
-	 * @var string
-	 */
-	public $editor_engine;
 
 	/**
 	 * Set the image editor engine according to the unit test's specification

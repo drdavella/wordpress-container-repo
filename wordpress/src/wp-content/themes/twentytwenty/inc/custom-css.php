@@ -10,7 +10,7 @@
 if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 
 	/**
-	 * Generates CSS.
+	 * Generate CSS.
 	 *
 	 * @since Twenty Twenty 1.0
 	 *
@@ -48,8 +48,8 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 	/**
-	 * Gets CSS Built from Customizer Options.
-	 * Builds CSS reflecting colors, fonts and other options set in the Customizer, and returns them for output.
+	 * Get CSS Built from Customizer Options.
+	 * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output.
 	 *
 	 * @since Twenty Twenty 1.0
 	 *

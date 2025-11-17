@@ -52,7 +52,7 @@ add_action( 'after_setup_theme', 'twentyeleven_setup' );
 
 if ( ! function_exists( 'twentyeleven_setup' ) ) :
 	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
+	 * Set up theme defaults and registers support for various WordPress features.
 	 *
 	 * Note that this function is hooked into the after_setup_theme hook, which runs
 	 * before the init hook. The init hook is too late for some features, such as indicating
@@ -298,7 +298,7 @@ if ( ! function_exists( 'twentyeleven_setup' ) ) :
 endif; // twentyeleven_setup()
 
 /**
- * Enqueues scripts and styles for front end.
+ * Enqueue scripts and styles for front end.
  *
  * @since Twenty Eleven 2.9
  */
@@ -309,7 +309,7 @@ function twentyeleven_scripts_styles() {
 add_action( 'wp_enqueue_scripts', 'twentyeleven_scripts_styles' );
 
 /**
- * Enqueues styles for the block-based editor.
+ * Enqueue styles for the block-based editor.
  *
  * @since Twenty Eleven 2.9
  */
@@ -411,7 +411,7 @@ endif; // twentyeleven_admin_header_style()
 
 if ( ! function_exists( 'twentyeleven_admin_header_image' ) ) :
 	/**
-	 * Displays custom header image markup on the Appearance > Header admin panel.
+	 * Custom header image markup displayed on the Appearance > Header admin panel.
 	 *
 	 * Referenced via add_theme_support('custom-header') in twentyeleven_setup().
 	 *
@@ -442,7 +442,7 @@ endif; // twentyeleven_admin_header_image()
 
 if ( ! function_exists( 'twentyeleven_header_image' ) ) :
 	/**
-	 * Displays custom header image markup.
+	 * Custom header image markup displayed.
 	 *
 	 * @since Twenty Eleven 4.5
 	 */
@@ -473,7 +473,7 @@ if ( ! function_exists( 'twentyeleven_header_image' ) ) :
 endif; // twentyeleven_header_image()
 
 /**
- * Sets the post excerpt length to 40 words.
+ * Set the post excerpt length to 40 words.
  *
  * To override this length in a child theme, remove
  * the filter and add your own function tied to
@@ -491,7 +491,7 @@ add_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
 
 if ( ! function_exists( 'twentyeleven_continue_reading_link' ) ) :
 	/**
-	 * Returns a "Continue Reading" link for excerpts.
+	 * Return a "Continue Reading" link for excerpts
 	 *
 	 * @since Twenty Eleven 1.0
 	 *
@@ -503,7 +503,7 @@ if ( ! function_exists( 'twentyeleven_continue_reading_link' ) ) :
 endif; // twentyeleven_continue_reading_link()
 
 /**
- * Replaces "[...]" in the Read More link with an ellipsis.
+ * Replace "[...]" in the Read More link with an ellipsis.
  *
  * The "[...]" is appended to automatically generated excerpts.
  *
@@ -524,7 +524,7 @@ function twentyeleven_auto_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'twentyeleven_auto_excerpt_more' );
 
 /**
- * Adds a pretty "Continue Reading" link to custom post excerpts.
+ * Add a pretty "Continue Reading" link to custom post excerpts.
  *
  * To override this link in a child theme, remove the filter and add your own
  * function tied to the get_the_excerpt filter hook.
@@ -543,7 +543,7 @@ function twentyeleven_custom_excerpt_more( $output ) {
 add_filter( 'get_the_excerpt', 'twentyeleven_custom_excerpt_more' );
 
 /**
- * Shows a home link for the wp_nav_menu() fallback, wp_page_menu().
+ * Show a home link for the wp_nav_menu() fallback, wp_page_menu().
  *
  * @since Twenty Eleven 1.0
  *
@@ -559,7 +559,7 @@ function twentyeleven_page_menu_args( $args ) {
 add_filter( 'wp_page_menu_args', 'twentyeleven_page_menu_args' );
 
 /**
- * Registers sidebars and widgetized areas.
+ * Register sidebars and widgetized areas.
  *
  * Also register the default Ephemera widget.
  *
@@ -632,7 +632,7 @@ add_action( 'widgets_init', 'twentyeleven_widgets_init' );
 
 if ( ! function_exists( 'twentyeleven_content_nav' ) ) :
 	/**
-	 * Displays navigation to next/previous pages when applicable.
+	 * Display navigation to next/previous pages when applicable.
 	 *
 	 * @since Twenty Eleven 1.0
 	 *
@@ -642,32 +642,19 @@ if ( ! function_exists( 'twentyeleven_content_nav' ) ) :
 		global $wp_query;
 
 		if ( $wp_query->max_num_pages > 1 ) :
-			$order   = get_query_var( 'order', 'DESC' );
-			$is_desc = ( 'DESC' === $order );
-
-			$new_posts_text = __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyeleven' );
-			$old_posts_text = __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyeleven' );
-
-			$prev_link = $is_desc ? get_next_posts_link( $old_posts_text ) : get_previous_posts_link( $old_posts_text );
-			$next_link = $is_desc ? get_previous_posts_link( $new_posts_text ) : get_next_posts_link( $new_posts_text );
 			?>
 			<nav id="<?php echo esc_attr( $html_id ); ?>">
 				<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentyeleven' ); ?></h3>
-				<?php if ( $prev_link ) : ?>
-					<div class="nav-previous"><?php echo $prev_link; ?></div>
-				<?php endif; ?>
-
-				<?php if ( $next_link ) : ?>
-					<div class="nav-next"><?php echo $next_link; ?></div>
-				<?php endif; ?>
-			</nav><!-- #<?php echo esc_attr( $html_id ); ?> -->
+				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyeleven' ) ); ?></div>
+				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
+			</nav><!-- #nav-above -->
 			<?php
-		endif;
+	endif;
 	}
 endif; // twentyeleven_content_nav()
 
 /**
- * Returns the first link from the post content. If none found, the
+ * Return the first link from the post content. If none found, the
  * post permalink is used as a fallback.
  *
  * @since Twenty Eleven 1.0
@@ -689,7 +676,7 @@ function twentyeleven_get_first_url() {
 }
 
 /**
- * Returns the URL for the first link found in the post content.
+ * Return the URL for the first link found in the post content.
  *
  * @since Twenty Eleven 1.0
  *
@@ -704,7 +691,7 @@ function twentyeleven_url_grabber() {
 }
 
 /**
- * Counts the number of footer sidebars to enable dynamic classes for the footer.
+ * Count the number of footer sidebars to enable dynamic classes for the footer.
  *
  * @since Twenty Eleven 1.0
  */
@@ -841,7 +828,7 @@ endif; // twentyeleven_comment()
 
 if ( ! function_exists( 'twentyeleven_posted_on' ) ) :
 	/**
-	 * Prints HTML with meta information for the current post-date/time and author.
+	 * Print HTML with meta information for the current post-date/time and author.
 	 *
 	 * Create your own twentyeleven_posted_on to override in a child theme
 	 *
@@ -864,7 +851,7 @@ if ( ! function_exists( 'twentyeleven_posted_on' ) ) :
 endif;
 
 /**
- * Adds two classes to the array of body classes.
+ * Add two classes to the array of body classes.
  *
  * The first is if the site has only had one author with published posts.
  * The second is if a singular post being displayed
@@ -889,7 +876,7 @@ function twentyeleven_body_classes( $classes ) {
 add_filter( 'body_class', 'twentyeleven_body_classes' );
 
 /**
- * Retrieves the IDs for images in a gallery.
+ * Retrieve the IDs for images in a gallery.
  *
  * @uses get_post_galleries() First, if available. Falls back to shortcode parsing,
  *                            then as last option uses a get_posts() call.
@@ -953,7 +940,7 @@ add_filter( 'widget_tag_cloud_args', 'twentyeleven_widget_tag_cloud_args' );
 
 if ( ! function_exists( 'wp_body_open' ) ) :
 	/**
-	 * Fires the wp_body_open action.
+	 * Fire the wp_body_open action.
 	 *
 	 * Added for backward compatibility to support pre-5.2.0 WordPress versions.
 	 *
@@ -970,7 +957,7 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 endif;
 
 /**
- * Includes a skip to content link at the top of the page so that users can bypass the menu.
+ * Include a skip to content link at the top of the page so that users can bypass the menu.
  *
  * @since Twenty Eleven 3.4
  */

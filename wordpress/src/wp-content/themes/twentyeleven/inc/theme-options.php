@@ -8,7 +8,7 @@
  */
 
 /**
- * Properly enqueues styles and scripts for our theme options page.
+ * Properly enqueue styles and scripts for our theme options page.
  *
  * This function is attached to the admin_enqueue_scripts action hook.
  *
@@ -24,7 +24,7 @@ function twentyeleven_admin_enqueue_scripts( $hook_suffix ) {
 add_action( 'admin_print_styles-appearance_page_theme_options', 'twentyeleven_admin_enqueue_scripts' );
 
 /**
- * Registers the form setting for our twentyeleven_options array.
+ * Register the form setting for our twentyeleven_options array.
  *
  * This function is attached to the admin_init action hook.
  *
@@ -65,7 +65,7 @@ function twentyeleven_theme_options_init() {
 add_action( 'admin_init', 'twentyeleven_theme_options_init' );
 
 /**
- * Changes the capability required to save the 'twentyeleven_options' options group.
+ * Change the capability required to save the 'twentyeleven_options' options group.
  *
  * @see twentyeleven_theme_options_init()     First parameter to register_setting() is the name of the options group.
  * @see twentyeleven_theme_options_add_page() The edit_theme_options capability is used for viewing the page.
@@ -84,7 +84,7 @@ function twentyeleven_option_page_capability( $capability ) {
 add_filter( 'option_page_capability_twentyeleven_options', 'twentyeleven_option_page_capability' );
 
 /**
- * Adds a theme options page to the admin menu, including some help documentation.
+ * Add a theme options page to the admin menu, including some help documentation.
  *
  * This function is attached to the admin_menu action hook.
  *
@@ -141,7 +141,7 @@ function twentyeleven_theme_options_help() {
 }
 
 /**
- * Returns an array of color schemes registered for Twenty Eleven.
+ * Return an array of color schemes registered for Twenty Eleven.
  *
  * @since Twenty Eleven 1.0
  */
@@ -172,7 +172,7 @@ function twentyeleven_color_schemes() {
 }
 
 /**
- * Returns an array of layout options registered for Twenty Eleven.
+ * Return an array of layout options registered for Twenty Eleven.
  *
  * @since Twenty Eleven 1.0
  */
@@ -206,7 +206,7 @@ function twentyeleven_layouts() {
 }
 
 /**
- * Returns the default options for Twenty Eleven.
+ * Return the default options for Twenty Eleven.
  *
  * @since Twenty Eleven 1.0
  *
@@ -234,7 +234,7 @@ function twentyeleven_get_default_theme_options() {
 }
 
 /**
- * Returns the default link color for Twenty Eleven, based on color scheme.
+ * Return the default link color for Twenty Eleven, based on color scheme.
  *
  * @since Twenty Eleven 1.0
  *
@@ -257,7 +257,7 @@ function twentyeleven_get_default_link_color( $color_scheme = null ) {
 }
 
 /**
- * Returns the options array for Twenty Eleven.
+ * Return the options array for Twenty Eleven.
  *
  * @since Twenty Eleven 1.0
  */
@@ -266,7 +266,7 @@ function twentyeleven_get_theme_options() {
 }
 
 /**
- * Renders the Color Scheme setting field.
+ * Render the Color Scheme setting field.
  *
  * @since Twenty Eleven 1.3
  */
@@ -290,7 +290,7 @@ function twentyeleven_settings_field_color_scheme() {
 }
 
 /**
- * Renders the Link Color setting field.
+ * Render the Link Color setting field.
  *
  * @since Twenty Eleven 1.3
  */
@@ -312,7 +312,7 @@ function twentyeleven_settings_field_link_color() {
 }
 
 /**
- * Renders the Layout setting field.
+ * Render the Layout setting field.
  *
  * @since Twenty Eleven 1.3
  */
@@ -334,7 +334,7 @@ function twentyeleven_settings_field_layout() {
 }
 
 /**
- * Renders the theme options page for Twenty Eleven.
+ * Render the theme options page for Twenty Eleven.
  *
  * @since Twenty Eleven 1.2
  */
@@ -362,7 +362,7 @@ function twentyeleven_theme_options_render_page() {
 }
 
 /**
- * Sanitizes and validates form input.
+ * Sanitize and validate form input.
  *
  * Accepts an array, return a sanitized array.
  *
@@ -409,7 +409,7 @@ function twentyeleven_theme_options_validate( $input ) {
 }
 
 /**
- * Enqueues the styles for the current color scheme.
+ * Enqueue the styles for the current color scheme.
  *
  * @since Twenty Eleven 1.0
  */
@@ -433,7 +433,7 @@ function twentyeleven_enqueue_color_scheme() {
 add_action( 'wp_enqueue_scripts', 'twentyeleven_enqueue_color_scheme' );
 
 /**
- * Adds a style block to the theme for the current link color.
+ * Add a style block to the theme for the current link color.
  *
  * This function is attached to the wp_head action hook.
  *
@@ -482,7 +482,7 @@ function twentyeleven_print_link_color_style() {
 add_action( 'wp_head', 'twentyeleven_print_link_color_style' );
 
 /**
- * Adds Twenty Eleven layout classes to the array of body classes.
+ * Add Twenty Eleven layout classes to the array of body classes.
  *
  * @since Twenty Eleven 1.0
  *
@@ -640,7 +640,7 @@ function twentyeleven_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'twentyeleven_customize_register' );
 
 /**
- * Renders the site title for the selective refresh partial.
+ * Render the site title for the selective refresh partial.
  *
  * @since Twenty Eleven 2.4
  *
@@ -653,7 +653,7 @@ function twentyeleven_customize_partial_blogname() {
 }
 
 /**
- * Renders the site tagline for the selective refresh partial.
+ * Render the site tagline for the selective refresh partial.
  *
  * @since Twenty Eleven 2.4
  *
@@ -666,7 +666,7 @@ function twentyeleven_customize_partial_blogdescription() {
 }
 
 /**
- * Binds JS handlers to make Customizer preview reload changes asynchronously.
+ * Bind JS handlers to make Customizer preview reload changes asynchronously.
  *
  * Used with blogname and blogdescription.
  *

@@ -1,10 +1,8 @@
 <?php
-
 /**
  * Tests for the wp_cache_set_last_changed() function.
  *
  * @group functions
- * @group cache
  *
  * @covers ::wp_cache_set_last_changed
  */

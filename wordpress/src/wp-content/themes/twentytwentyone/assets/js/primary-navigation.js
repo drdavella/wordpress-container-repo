@@ -5,7 +5,7 @@
  */
 
 /**
- * Toggles an attribute's value
+ * Toggle an attribute's value
  *
  * @since Twenty Twenty-One 1.0
  *
@@ -66,7 +66,7 @@ function twentytwentyoneSubmenuPosition( li ) {
 }
 
 /**
- * Handles clicks on submenu toggles.
+ * Handle clicks on submenu toggles.
  *
  * @since Twenty Twenty-One 1.0
  *
@@ -134,7 +134,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 		} );
 
 		/**
-		 * Traps keyboard navigation in the menu modal.
+		 * Trap keyboard navigation in the menu modal.
 		 * Adapted from Twenty Twenty.
 		 *
 		 * @since Twenty Twenty-One 1.0
@@ -180,7 +180,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 		} );
 
 		/**
-		 * Closes menu and scrolls to anchor when an anchor link is clicked.
+		 * Close menu and scroll to anchor when an anchor link is clicked.
 		 * Adapted from Twenty Twenty.
 		 *
 		 * @since Twenty Twenty-One 1.1
@@ -211,7 +211,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 		} );
 	};
 
-	document.addEventListener( 'DOMContentLoaded', function() {
+	window.addEventListener( 'load', function() {
 		new navMenu( 'primary' );
 	} );
 }() );

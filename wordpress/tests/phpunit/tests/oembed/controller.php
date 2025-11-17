@@ -304,7 +304,11 @@ class Test_oEmbed_Controller extends WP_UnitTestCase {
 	}
 
 	public function test_request_json() {
-		$user = get_user_by( 'id', self::$subscriber );
+		$user = self::factory()->user->create_and_get(
+			array(
+				'display_name' => 'John Doe',
+			)
+		);
 		$post = self::factory()->post->create_and_get(
 			array(
 				'post_author' => $user->ID,
@@ -387,7 +391,11 @@ class Test_oEmbed_Controller extends WP_UnitTestCase {
 	}
 
 	public function test_request_xml() {
-		$user = get_user_by( 'id', self::$subscriber );
+		$user = self::factory()->user->create_and_get(
+			array(
+				'display_name' => 'John Doe',
+			)
+		);
 		$post = self::factory()->post->create_and_get(
 			array(
 				'post_author' => $user->ID,
@@ -453,7 +461,11 @@ class Test_oEmbed_Controller extends WP_UnitTestCase {
 	}
 
 	public function test_rest_pre_serve_request() {
-		$user = get_user_by( 'id', self::$subscriber );
+		$user = self::factory()->user->create_and_get(
+			array(
+				'display_name' => 'John Doe',
+			)
+		);
 		$post = self::factory()->post->create_and_get(
 			array(
 				'post_author' => $user->ID,
@@ -665,7 +677,11 @@ class Test_oEmbed_Controller extends WP_UnitTestCase {
 	public function test_proxy_with_internal_url() {
 		wp_set_current_user( self::$editor );
 
-		$user = get_user_by( 'id', self::$subscriber );
+		$user = self::factory()->user->create_and_get(
+			array(
+				'display_name' => 'John Doe',
+			)
+		);
 		$post = self::factory()->post->create_and_get(
 			array(
 				'post_author' => $user->ID,

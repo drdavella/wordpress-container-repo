@@ -1,7 +1,6 @@
 name: Local Docker Environment
 
 on:
-  # Local Docker environment testing was introduced in WordPress 6.8.
   push:
     branches:
       - trunk
@@ -18,8 +17,6 @@ on:
       - 'Gruntfile.js'
       - 'webpack.config.js'
       - 'tools/webpack/**'
-      - '.npmrc'
-      - '.nvmrc'
       # These files configure Composer. Changes could affect the local environment.
       - 'composer.*'
       # These files define the versions to test.
@@ -44,8 +41,6 @@ on:
       - 'Gruntfile.js'
       - 'webpack.config.js'
       - 'tools/webpack/**'
-      - '.npmrc'
-      - '.nvmrc'
       # These files configure Composer. Changes could affect the local environment.
       - 'composer.*'
       # These files define the versions to test.
@@ -74,18 +69,18 @@ jobs:
   #
   build-test-matrix:
     name: Build Test Matrix
-    uses: ./.github/workflows/reusable-support-json-reader-v1.yml
+    uses: WordPress/wordpress-develop/.github/workflows/reusable-support-json-reader-v1.yml@trunk
     permissions:
       contents: read
     secrets: inherit
-    if: ${{ github.repository == 'WordPress/wordpress-develop' }}
+    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     with:
       wp-version: ${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}
 
   # Tests the local Docker environment.
   environment-tests-mysql:
     name: PHP ${{ matrix.php }}
-    uses: ./.github/workflows/reusable-test-local-docker-environment-v1.yml
+    uses: WordPress/wordpress-develop/.github/workflows/reusable-test-local-docker-environment-v1.yml@trunk
     permissions:
       contents: read
     needs: [ build-test-matrix ]
@@ -102,17 +97,11 @@ jobs:
           - db-version: '5.5'
           # Only test the latest innovation release.
           - db-version: '9.0'
-          - db-version: '9.1'
-          - db-version: '9.2'
-          - db-version: '9.3'
           # MySQL 9.0+ will not work on PHP 7.2 & 7.3. See https://core.trac.wordpress.org/ticket/61218.
           - php: '7.2'
-            db-version: '9.4'
+            db-version: '9.1'
           - php: '7.3'
-            db-version: '9.4'
-          # No PHP 8.5 + Memcached support yet.
-          - php: '8.5'
-            memcached: true
+            db-version: '9.1'
 
     with:
       os: ${{ matrix.os }}
@@ -123,7 +112,7 @@ jobs:
 
   slack-notifications:
     name: Slack Notifications
-    uses: ./.github/workflows/slack-notifications.yml
+    uses: WordPress/wordpress-develop/.github/workflows/slack-notifications.yml@trunk
     permissions:
       actions: read
       contents: read

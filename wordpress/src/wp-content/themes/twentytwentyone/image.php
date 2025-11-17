@@ -22,7 +22,7 @@ while ( have_posts() ) {
 			<figure class="wp-block-image">
 				<?php
 				/**
-				 * Filters the default image attachment size.
+				 * Filter the default image attachment size.
 				 *
 				 * @since Twenty Twenty-One 1.0
 				 *

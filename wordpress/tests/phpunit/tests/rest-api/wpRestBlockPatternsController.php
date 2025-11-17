@@ -63,9 +63,7 @@ class Tests_REST_WpRestBlockPatternsController extends WP_Test_REST_Controller_T
 		// Setup an empty testing instance of `WP_Block_Patterns_Registry` and save the original.
 		self::$orig_registry              = WP_Block_Patterns_Registry::get_instance();
 		self::$registry_instance_property = new ReflectionProperty( 'WP_Block_Patterns_Registry', 'instance' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			self::$registry_instance_property->setAccessible( true );
-		}
+		self::$registry_instance_property->setAccessible( true );
 		$test_registry = new WP_Block_Pattern_Categories_Registry();
 		self::$registry_instance_property->setValue( null, $test_registry );
 
@@ -109,9 +107,7 @@ class Tests_REST_WpRestBlockPatternsController extends WP_Test_REST_Controller_T
 
 		// Restore the original registry instance.
 		self::$registry_instance_property->setValue( null, self::$orig_registry );
-		if ( PHP_VERSION_ID < 80100 ) {
-			self::$registry_instance_property->setAccessible( false );
-		}
+		self::$registry_instance_property->setAccessible( false );
 		self::$registry_instance_property = null;
 		self::$orig_registry              = null;
 	}

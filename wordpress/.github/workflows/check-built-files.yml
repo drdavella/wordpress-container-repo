@@ -19,8 +19,6 @@ on:
       - '**.sass'
       # These files configure npm and the task runner. Changes could affect the outcome.
       - 'package*.json'
-      - '.npmrc'
-      - '.nvmrc'
       - 'Gruntfile.js'
       - 'webpack.config.js'
       - 'tools/webpack/**'
@@ -28,8 +26,6 @@ on:
       - 'composer.*'
       # Confirm any changes to relevant workflow files.
       - '.github/workflows/check-built-files.yml'
-      # Changes to the default themes should be handled by the themes workflows.
-      - '!src/wp-content/themes/twenty**'
 
 # Cancels all previous workflow runs for pull requests that have not completed.
 concurrency:
@@ -45,7 +41,6 @@ permissions: {}
 jobs:
   check-for-built-file-changes:
     name: Check built files
-    if: ${{ github.repository == 'wordpress/wordpress-develop' }}
-    uses: ./.github/workflows/reusable-check-built-files.yml
-    permissions:
-      contents: read
+    # This prevents an unnecessary second run after changes are committed back because Dependabot always rebases and force pushes.
+    if: ${{ github.repository == 'wordpress/wordpress-develop' && ( github.actor != 'dependabot[bot]' || github.event.commits < 2 ) }}
+    uses: WordPress/wordpress-develop/.github/workflows/reusable-check-built-files.yml@trunk

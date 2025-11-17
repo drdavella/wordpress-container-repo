@@ -49,7 +49,7 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 				} ),
 				item,
 				/**
-				 * Gets a score for this color in contrast to its background color and surrounding text.
+				 * Get a score for this color in contrast to its background color and surrounding text.
 				 *
 				 * @since Twenty Twenty 1.0
 				 *
@@ -110,7 +110,7 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 };
 
 /**
- * Gets accessible text-color.
+ * Get accessible text-color.
  *
  * @since Twenty Twenty 1.0
  *
@@ -121,7 +121,7 @@ _twentyTwentyColor.prototype.getTextColor = function() {
 };
 
 /**
- * Gets accessible color for the defined accent-hue and background-color.
+ * Get accessible color for the defined accent-hue and background-color.
  *
  * @since Twenty Twenty 1.0
  *
@@ -141,7 +141,7 @@ _twentyTwentyColor.prototype.getAccentColor = function() {
 };
 
 /**
- * Returns a new instance of the _twentyTwentyColor object.
+ * Return a new instance of the _twentyTwentyColor object.
  *
  * @since Twenty Twenty 1.0
  *

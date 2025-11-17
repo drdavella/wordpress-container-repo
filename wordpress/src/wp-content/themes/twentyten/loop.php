@@ -20,24 +20,10 @@
 ?>
 
 <?php // Display navigation to next/previous pages when applicable. ?>
-<?php
-if ( $wp_query->max_num_pages > 1 ) :
-	$is_desc = ( 'DESC' === get_query_var( 'order', 'DESC' ) );
-
-	$new_posts_text = __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' );
-	$old_posts_text = __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' );
-
-	$prev_link = $is_desc ? get_next_posts_link( $old_posts_text ) : get_previous_posts_link( $old_posts_text );
-	$next_link = $is_desc ? get_previous_posts_link( $new_posts_text ) : get_next_posts_link( $new_posts_text );
-	?>
+<?php if ( $wp_query->max_num_pages > 1 ) : ?>
 	<div id="nav-above" class="navigation">
-	<?php if ( $prev_link ) : ?>
-		<div class="nav-previous"><?php echo $prev_link; ?></div>
-	<?php endif; ?>
-
-	<?php if ( $next_link ) : ?>
-		<div class="nav-next"><?php echo $next_link; ?></div>
-	<?php endif; ?>
+		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' ) ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?></div>
 	</div><!-- #nav-above -->
 <?php endif; ?>
 
@@ -219,12 +205,7 @@ while ( have_posts() ) :
 <?php // Display navigation to next/previous pages when applicable. ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
 				<div id="nav-below" class="navigation">
-				<?php if ( $prev_link ) : ?>
-					<div class="nav-previous"><?php echo $prev_link; ?></div>
-				<?php endif; ?>
-
-				<?php if ( $next_link ) : ?>
-					<div class="nav-next"><?php echo $next_link; ?></div>
-				<?php endif; ?>
+					<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' ) ); ?></div>
+					<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?></div>
 				</div><!-- #nav-below -->
 <?php endif; ?>

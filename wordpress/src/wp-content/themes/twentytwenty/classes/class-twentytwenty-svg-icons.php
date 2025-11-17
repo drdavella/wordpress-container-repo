@@ -10,14 +10,14 @@
 if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 	/**
 	 * SVG ICONS CLASS
-	 * Retrieves the SVG code for the specified icon. Based on a solution in Twenty Nineteen.
+	 * Retrieve the SVG code for the specified icon. Based on a solution in Twenty Nineteen.
 	 *
 	 * @since Twenty Twenty 1.0
 	 */
 	class TwentyTwenty_SVG_Icons {
 		/**
 		 * GET SVG CODE
-		 * Gets the SVG code for the specified icon.
+		 * Get the SVG code for the specified icon
 		 *
 		 * @since Twenty Twenty 1.0
 		 *
@@ -120,7 +120,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 
 		/**
 		 * ICON STORAGE
-		 * Stores the code for all SVGs in an array.
+		 * Store the code for all SVGs in an array.
 		 *
 		 * @since Twenty Twenty 1.0
 		 * @var array

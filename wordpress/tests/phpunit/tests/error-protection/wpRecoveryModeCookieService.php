@@ -35,9 +35,7 @@ class Tests_Error_Protection_wpRecoveryModeCookieService extends WP_UnitTestCase
 	public function test_validate_cookie_returns_wp_error_if_expired() {
 		$service    = new WP_Recovery_Mode_Cookie_Service();
 		$reflection = new ReflectionMethod( $service, 'recovery_mode_hash' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$reflection->setAccessible( true );
-		}
+		$reflection->setAccessible( true );
 
 		$to_sign = sprintf( 'recovery_mode|%s|%s', time() - WEEK_IN_SECONDS - 30, wp_generate_password( 20, false ) );
 		$signed  = $reflection->invoke( $service, $to_sign );
@@ -56,9 +54,7 @@ class Tests_Error_Protection_wpRecoveryModeCookieService extends WP_UnitTestCase
 	public function test_validate_cookie_returns_wp_error_if_signature_mismatch() {
 		$service    = new WP_Recovery_Mode_Cookie_Service();
 		$reflection = new ReflectionMethod( $service, 'generate_cookie' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$reflection->setAccessible( true );
-		}
+		$reflection->setAccessible( true );
 
 		$cookie  = $reflection->invoke( $service );
 		$cookie .= 'gibbersih';
@@ -76,9 +72,7 @@ class Tests_Error_Protection_wpRecoveryModeCookieService extends WP_UnitTestCase
 	public function test_validate_cookie_returns_wp_error_if_created_at_is_invalid_format() {
 		$service    = new WP_Recovery_Mode_Cookie_Service();
 		$reflection = new ReflectionMethod( $service, 'recovery_mode_hash' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$reflection->setAccessible( true );
-		}
+		$reflection->setAccessible( true );
 
 		$to_sign = sprintf( 'recovery_mode|%s|%s', 'month', wp_generate_password( 20, false ) );
 		$signed  = $reflection->invoke( $service, $to_sign );
@@ -98,9 +92,7 @@ class Tests_Error_Protection_wpRecoveryModeCookieService extends WP_UnitTestCase
 
 		$service    = new WP_Recovery_Mode_Cookie_Service();
 		$reflection = new ReflectionMethod( $service, 'generate_cookie' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$reflection->setAccessible( true );
-		}
+		$reflection->setAccessible( true );
 
 		$this->assertTrue( $service->validate_cookie( $reflection->invoke( $service ) ) );
 	}

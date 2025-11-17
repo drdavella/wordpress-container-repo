@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @group admin
  * @group ms-required
+ * @group admin
  * @group network-admin
  *
  * @covers WP_MS_Themes_List_Table

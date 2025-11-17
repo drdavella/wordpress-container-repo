@@ -490,7 +490,6 @@ HTML
 			'Comment with --!>'                => array( '<!-- this is a comment -->', 'Invalid but legitimate comments end in --!>' ),
 			'SCRIPT with </script>'            => array( '<script>Replace me</script>', 'Just a </script>' ),
 			'SCRIPT with </script attributes>' => array( '<script>Replace me</script>', 'before</script id=sneak>after' ),
-			'SCRIPT with "<script " opener'    => array( '<script>Replace me</script>', '<!--<script ' ),
 		);
 	}
 }

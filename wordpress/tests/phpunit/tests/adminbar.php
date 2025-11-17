@@ -731,23 +731,23 @@ class Tests_AdminBar extends WP_UnitTestCase {
 	/**
 	 * @ticket 39082
 	 * @group ms-required
-	 * @dataProvider data_my_sites_network_menu_items
 	 */
-	public function test_my_sites_network_menu_for_regular_user( $id, $cap ) {
+	public function test_my_sites_network_menu_for_regular_user() {
 		wp_set_current_user( self::$editor_id );
 
 		$wp_admin_bar = $this->get_standard_admin_bar();
 
 		$nodes = $wp_admin_bar->get_nodes();
-		$this->assertArrayNotHasKey( $id, $nodes, sprintf( 'Menu item %s must not display for a regular user.', $id ) );
+		foreach ( $this->get_my_sites_network_menu_items() as $id => $cap ) {
+			$this->assertArrayNotHasKey( $id, $nodes, sprintf( 'Menu item %s must not display for a regular user.', $id ) );
+		}
 	}
 
 	/**
 	 * @ticket 39082
 	 * @group ms-required
-	 * @dataProvider data_my_sites_network_menu_items
 	 */
-	public function test_my_sites_network_menu_for_super_admin( $id, $cap ) {
+	public function test_my_sites_network_menu_for_super_admin() {
 		wp_set_current_user( self::$editor_id );
 
 		grant_super_admin( self::$editor_id );
@@ -755,15 +755,16 @@ class Tests_AdminBar extends WP_UnitTestCase {
 		revoke_super_admin( self::$editor_id );
 
 		$nodes = $wp_admin_bar->get_nodes();
-		$this->assertArrayHasKey( $id, $nodes, sprintf( 'Menu item %s must display for a super admin.', $id ) );
+		foreach ( $this->get_my_sites_network_menu_items() as $id => $cap ) {
+			$this->assertArrayHasKey( $id, $nodes, sprintf( 'Menu item %s must display for a super admin.', $id ) );
+		}
 	}
 
 	/**
 	 * @ticket 39082
 	 * @group ms-required
-	 * @dataProvider data_my_sites_network_menu_items
 	 */
-	public function test_my_sites_network_menu_for_regular_user_with_network_caps( $id, $cap ) {
+	public function test_my_sites_network_menu_for_regular_user_with_network_caps() {
 		global $current_user;
 
 		$network_user_caps = array( 'manage_network', 'manage_network_themes', 'manage_network_plugins' );
@@ -779,34 +780,25 @@ class Tests_AdminBar extends WP_UnitTestCase {
 		}
 
 		$nodes = $wp_admin_bar->get_nodes();
-		if ( in_array( $cap, $network_user_caps, true ) ) {
-			$this->assertArrayHasKey( $id, $nodes, sprintf( 'Menu item %1$s must display for a user with the %2$s cap.', $id, $cap ) );
-		} else {
-			$this->assertArrayNotHasKey( $id, $nodes, sprintf( 'Menu item %1$s must not display for a user without the %2$s cap.', $id, $cap ) );
+		foreach ( $this->get_my_sites_network_menu_items() as $id => $cap ) {
+			if ( in_array( $cap, $network_user_caps, true ) ) {
+				$this->assertArrayHasKey( $id, $nodes, sprintf( 'Menu item %1$s must display for a user with the %2$s cap.', $id, $cap ) );
+			} else {
+				$this->assertArrayNotHasKey( $id, $nodes, sprintf( 'Menu item %1$s must not display for a user without the %2$s cap.', $id, $cap ) );
+			}
 		}
 	}
 
-	/**
-	 * Data provider for test_my_sites_network_menu_for_regular_user() and
-	 * test_my_sites_network_menu_for_super_admin().
-	 *
-	 * @return array {
-	 *     @type array {
-	 *         @type string $id  The ID of the menu item.
-	 *         @type string $cap The capability required to see the menu item.
-	 *     }
-	 * }
-	 */
-	public function data_my_sites_network_menu_items() {
+	private function get_my_sites_network_menu_items() {
 		return array(
-			array( 'my-sites-super-admin', 'manage_network' ),
-			array( 'network-admin', 'manage_network' ),
-			array( 'network-admin-d', 'manage_network' ),
-			array( 'network-admin-s', 'manage_sites' ),
-			array( 'network-admin-u', 'manage_network_users' ),
-			array( 'network-admin-t', 'manage_network_themes' ),
-			array( 'network-admin-p', 'manage_network_plugins' ),
-			array( 'network-admin-o', 'manage_network_options' ),
+			'my-sites-super-admin' => 'manage_network',
+			'network-admin'        => 'manage_network',
+			'network-admin-d'      => 'manage_network',
+			'network-admin-s'      => 'manage_sites',
+			'network-admin-u'      => 'manage_network_users',
+			'network-admin-t'      => 'manage_network_themes',
+			'network-admin-p'      => 'manage_network_plugins',
+			'network-admin-o'      => 'manage_network_options',
 		);
 	}
 

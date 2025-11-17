@@ -248,15 +248,6 @@ class Tests_Block_Templates_wpBlockTemplatesRegistry extends WP_UnitTestCase {
 	}
 
 	/**
-	 * @ticket 63957
-	 *
-	 * @covers ::is_registered
-	 */
-	public function test_is_registered_with_null_template_name() {
-		$this->assertFalse( self::$registry->is_registered( null ) );
-	}
-
-	/**
 	 * Tests that unregister() correctly unregisters a registered template.
 	 *
 	 * @ticket 61804

@@ -662,15 +662,11 @@ class Tests_Blocks_wpBlockPatternsRegistry extends WP_UnitTestCase {
 		// Use Reflection to access private property.
 		$reflection = new ReflectionClass( $registry );
 		$property   = $reflection->getProperty( 'registered_patterns' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$property->setAccessible( true );
-		}
+		$property->setAccessible( true );
 
 		// Get the value of the private property.
 		$registered_patterns = $property->getValue( $registry );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$property->setAccessible( false );
-		}
+		$property->setAccessible( false );
 
 		return $registered_patterns;
 	}
@@ -685,21 +681,10 @@ class Tests_Blocks_wpBlockPatternsRegistry extends WP_UnitTestCase {
 		// Use Reflection to access private property.
 		$reflection = new ReflectionClass( $registry );
 		$property   = $reflection->getProperty( 'registered_patterns' );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$property->setAccessible( true );
-		}
+		$property->setAccessible( true );
 
 		// Set the value of the private property.
 		$property->setValue( $registry, $value );
-		if ( PHP_VERSION_ID < 80100 ) {
-			$property->setAccessible( false );
-		}
-	}
-
-	/**
-	 * @ticket 63957
-	 */
-	public function test_is_registered_with_null_pattern_name() {
-		$this->assertFalse( $this->registry->is_registered( null ) );
+		$property->setAccessible( false );
 	}
 }

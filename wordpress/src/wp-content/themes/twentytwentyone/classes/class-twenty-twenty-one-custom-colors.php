@@ -13,7 +13,7 @@
 class Twenty_Twenty_One_Custom_Colors {
 
 	/**
-	 * Instantiates the object.
+	 * Instantiate the object.
 	 *
 	 * @since Twenty Twenty-One 1.0
 	 */
@@ -30,7 +30,7 @@ class Twenty_Twenty_One_Custom_Colors {
 	}
 
 	/**
-	 * Determines the luminance of the given color and then returns #fff or #000 so that the text is always readable.
+	 * Determine the luminance of the given color and then return #fff or #000 so that the text is always readable.
 	 *
 	 * @since Twenty Twenty-One 1.0
 	 *
@@ -42,9 +42,9 @@ class Twenty_Twenty_One_Custom_Colors {
 	}
 
 	/**
-	 * Generates color variables.
+	 * Generate color variables.
 	 *
-	 * Adjusts the color value of the CSS variables depending on the background color theme mod.
+	 * Adjust the color value of the CSS variables depending on the background color theme mod.
 	 * Both text and link colors needs to be updated.
 	 * The code below needs to be updated, because the colors are no longer theme mods.
 	 *
@@ -111,7 +111,7 @@ class Twenty_Twenty_One_Custom_Colors {
 	}
 
 	/**
-	 * Gets luminance from a HEX color.
+	 * Get luminance from a HEX color.
 	 *
 	 * @static
 	 *

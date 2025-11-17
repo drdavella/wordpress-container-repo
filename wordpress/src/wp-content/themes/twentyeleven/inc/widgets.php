@@ -150,7 +150,7 @@ class Twenty_Eleven_Ephemera_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Updates widget settings.
+	 * Update widget settings.
 	 *
 	 * Deals with the settings when they are saved by the admin. Here is
 	 * where any validation should be dealt with.
@@ -172,7 +172,7 @@ class Twenty_Eleven_Ephemera_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Flushes widget cache.
+	 * Flush widget cache.
 	 *
 	 * @since Twenty Eleven 1.0
 	 */
@@ -181,7 +181,7 @@ class Twenty_Eleven_Ephemera_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Sets up the widget form.
+	 * Set up the widget form.
 	 *
 	 * Displays the form for this widget on the Widgets page of the WP Admin area.
 	 *
